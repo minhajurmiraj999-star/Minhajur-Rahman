@@ -262,6 +262,53 @@ body .st.lgs span{color:#C9CDEB;font-weight:500;font-size:.92rem}
 body .jg .jgb{padding:9px 20px;min-height:40px;font-size:.85rem;margin:0}
 @media(max-width:760px){.jgg{grid-template-columns:1fr!important}.jg{padding:22px}}
 @media(max-width:700px){.wrap.hero{padding-left:18px;padding-right:18px}}
+
+/* ===== Hero logo orbit ===== */
+@property --a{syntax:"<angle>";inherits:true;initial-value:0deg}
+.band{overflow:hidden}
+.portrait{container-type:inline-size}
+.hb{--rx:58cqw;--ry:80cqw;--es:20cqw;position:absolute;inset:0;pointer-events:none}
+.orb-r{position:absolute;left:50%;top:50%;width:calc(var(--rx)*2);height:calc(var(--ry)*2);translate:-50% -50%;rotate:-12deg;border-radius:50%;border:1.5px solid rgba(196,181,253,.5);box-shadow:0 0 26px rgba(124,58,237,.4),inset 0 0 26px rgba(124,58,237,.2);animation:orbin 1s ease-out .3s both}
+.orb-r.back{z-index:0;clip-path:inset(0 0 50% 0);border-color:rgba(196,181,253,.28)}
+.orb-r.front{z-index:6;clip-path:inset(50% 0 0 0);border-color:rgba(221,214,254,.75);box-shadow:0 0 30px rgba(139,92,246,.55),inset 0 0 26px rgba(124,58,237,.25)}
+.el{--a:var(--a0);position:absolute;left:50%;top:50%;width:var(--es);aspect-ratio:1;margin:calc(var(--es)/-2) 0 0 calc(var(--es)/-2);pointer-events:auto;z-index:0;
+ translate:calc(cos(var(--a))*var(--rx)*.978 + sin(var(--a))*var(--ry)*.208) calc(cos(var(--a))*var(--rx)*-.208 + sin(var(--a))*var(--ry)*.978);
+ scale:calc(1 + sin(var(--a))*.16);
+ animation:elo 40s linear var(--dl) infinite,elz 40s linear var(--dl) infinite;
+ filter:drop-shadow(0 10px 14px rgba(40,20,140,.55))}
+.el::before{content:"";position:absolute;inset:-3.5px;border-radius:50%;background:conic-gradient(from var(--a),#8B5CF6,#38BDF8,#EC4899,#8B5CF6)}
+.el-i{position:absolute;inset:0;border-radius:50%;background:#fff;display:grid;place-items:center}
+.el-i img{width:62%;height:62%;object-fit:contain;border-radius:14%}
+.portrait:hover .el,.portrait:hover .orb-r{animation-play-state:paused}
+@keyframes elo{from{--a:0deg}to{--a:360deg}}
+@keyframes elz{0%{z-index:0}2.4%{z-index:0}2.6%{z-index:6}52.4%{z-index:6}52.6%{z-index:0}100%{z-index:0}}
+@keyframes orbin{from{opacity:0}to{opacity:1}}
+@media(max-width:900px){.hb{--rx:49cqw;--ry:76cqw;--es:14cqw}.hero .cap{margin-top:40px}}
+@media(max-width:600px){.hb{--rx:54cqw;--ry:78cqw;--es:19cqw}.hero .cap{margin-top:46px}}
+/* ===== Organizations cloud ===== */
+.o2{position:relative;overflow:hidden}
+.o2h{text-align:center;max-width:900px;margin:0 auto}.o2h .lead{max-width:720px}
+.o2h h2{border-left:0;padding-left:0}.o2h h2::before,.o2h h2::after{display:none}
+.o2h .lead{margin:12px auto 0}
+.o2f{position:relative;margin-top:34px}
+.o2f::before{content:"";position:absolute;left:50%;top:50%;width:72%;height:80%;translate:-50% -50%;background:radial-gradient(closest-side,rgba(124,58,237,.3),transparent);filter:blur(12px);pointer-events:none}
+.o2fi{position:relative;max-width:1300px;margin:0 auto;aspect-ratio:1200/520}
+.o2b{position:absolute;left:var(--x);top:var(--y);width:var(--sw);aspect-ratio:1;translate:-50% -50%;padding:0;border:0;background:none;cursor:pointer;font:inherit;color:inherit;z-index:1}
+.o2i{position:absolute;inset:0;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 0 0 6px rgba(255,255,255,.07),0 0 0 1px rgba(255,255,255,.7) inset,0 22px 40px -14px rgba(124,58,237,.75),0 8px 18px -6px rgba(0,0,0,.5);animation:hbf var(--du) ease-in-out var(--dl) infinite;transition:scale .28s cubic-bezier(.2,.9,.3,1.3),box-shadow .28s}
+.o2i img{width:60%;height:60%;object-fit:contain;border-radius:14%}
+.o2i b{font:800 .9rem Manrope,sans-serif;color:#2b1670;text-align:center}
+.o2b:hover,.o2b:focus-visible,.o2b.on{z-index:6;outline:0}
+.o2b:hover .o2i,.o2b:focus-visible .o2i,.o2b.on .o2i{scale:1.14;box-shadow:0 0 0 7px rgba(196,181,253,.3),0 0 0 1px rgba(255,255,255,.7) inset,0 26px 46px -12px rgba(139,92,246,1),0 8px 18px -6px rgba(0,0,0,.5)}
+.o2t{position:absolute;top:calc(100% + 10px);left:50%;translate:-50% 6px;width:max-content;max-width:230px;padding:9px 14px;border-radius:16px;text-align:center;opacity:0;pointer-events:none;transition:opacity .2s,translate .2s;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.03)),rgba(14,10,40,.92);border:1px solid rgba(196,181,253,.4);box-shadow:inset 0 1px 1px rgba(255,255,255,.4),0 14px 24px -12px rgba(124,58,237,.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.o2t b{display:block;font:700 .85rem Manrope,sans-serif;color:#fff}.o2t small{display:block;margin-top:2px;font:500 .74rem Inter,sans-serif;color:#C4B5FD}
+.o2b:hover .o2t,.o2b:focus-visible .o2t,.o2b.on .o2t{opacity:1;translate:-50% 0}
+.o2b.r .o2t{left:auto;right:0;translate:0 6px}.o2b.r:hover .o2t,.o2b.r.on .o2t,.o2b.r:focus-visible .o2t{translate:0 0}
+.o2b.l .o2t{left:0;translate:0 6px}.o2b.l:hover .o2t,.o2b.l.on .o2t,.o2b.l:focus-visible .o2t{translate:0 0}
+.o2c{text-align:center;padding-top:8px}.o2c p{color:var(--mute);margin:0 0 16px;font-size:.92rem}
+@media(max-width:700px){.o2fi{aspect-ratio:390/700}.o2b{left:var(--mx);top:var(--my);width:var(--msw)}.o2t{max-width:190px}}
+@media(prefers-reduced-motion:reduce){.el{animation:none!important;z-index:6}.orb-r,.o2i{animation:none!important}}
+@media(max-width:900px){.statg{grid-template-columns:repeat(2,1fr)!important}}
+.hero .cap{position:relative;z-index:7;margin-top:56px}
 </style></head><body>
 <header><div class="wrap"><a class="brand" href="#/" aria-label="Minhajur Rahman Majumder, home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="lg" aria-hidden="true"><defs><linearGradient id="bgh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a1a78"/><stop offset="1" stop-color="#080b22"/></linearGradient><linearGradient id="swh" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#8B5CF6"/><stop offset="1" stop-color="#2DD4BF"/></linearGradient></defs><rect width="64" height="64" rx="15" fill="url(#bgh)"/><path d="M32 4.5l23.8 13.75v27.5L32 59.5 8.2 45.75v-27.5z" fill="none" stroke="#fff" stroke-opacity=".13" stroke-width="1.5"/><path d="M14 37V12h8l10 14 10-14h8v25h-7V23l-9 13h-4l-9-13v14z" fill="#fff"/><path d="M8 53C20 41 42 39 58 46l-2 6C41 47 25 49 14 58z" fill="url(#swh)"/><circle cx="54" cy="11" r="2.8" fill="#2DD4BF"/><circle cx="54" cy="11" r="5.4" fill="none" stroke="#2DD4BF" stroke-opacity=".5" stroke-width="1"/></svg></a>
 <button id="burger" aria-expanded="false" aria-controls="nav">Menu</button>
@@ -442,7 +489,7 @@ const roleList=o=>`<ul class="roles">${o.roles.map(r=>`<li>${r[0]}<span>${r[1]}<
 const cats=[...new Set(CONFIG.orgs.map(o=>o.cat))];
 const pages={
 "/":()=>{const ph=PH.hero?`<img class="full" src="${PH.hero}" alt="Portrait of Minhajur Rahman Majumder">`:`<span role="img" aria-label="MRM monogram, portrait placeholder">MRM</span>`;
-app.innerHTML=`<div class="band"><div class="wrap hero"><div><p class="eye">CHEMISTRY • RESEARCH • LEADERSHIP • COMMUNICATION</p><h1>Exploring Science. Building Ideas. <span class="gt">Creating Impact.</span></h1><p class="lead" style="margin-top:22px">Hi, I'm Minhajur Rahman Majumder, a Chemistry undergraduate at the University of Chittagong, passionate about scientific research, innovation, leadership, and building meaningful connections between people and ideas.</p><div class="cta"><a class="btn" href="#journey" data-s>Explore My Work</a><a class="btn ghost" href="${LI}" target="_blank" rel="noopener noreferrer">Let's Connect</a></div></div><div><div class="portrait">${ph}</div><ul class="cap tg"><li>Chemistry Undergraduate</li><li>Research Enthusiast</li><li>Student Leader</li><li>Innovative</li></ul></div></div></div>
+app.innerHTML=`<div class="band"><div class="wrap hero"><div><p class="eye">CHEMISTRY • RESEARCH • LEADERSHIP • COMMUNICATION</p><h1>Exploring Science. Building Ideas. <span class="gt">Creating Impact.</span></h1><p class="lead" style="margin-top:22px">Hi, I'm Minhajur Rahman Majumder, a Chemistry undergraduate at the University of Chittagong, passionate about scientific research, innovation, leadership, and building meaningful connections between people and ideas.</p><div class="cta"><a class="btn" href="#journey" data-s>Explore My Work</a><a class="btn ghost" href="${LI}" target="_blank" rel="noopener noreferrer">Let's Connect</a></div></div><div><div class="portrait">${ph}${heroBubbles()}</div><ul class="cap tg"><li>Chemistry Undergraduate</li><li>Research Enthusiast</li><li>Student Leader</li><li>Innovative</li></ul></div></div></div>
 <section style="padding:40px 0 0" data-fx="up"><div class="wrap"><div class="grid statg" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">${statTiles()}</div></div></section>
 <section id="journey" data-fx="zoom"><div class="wrap"><h2>A Little About My Journey</h2><p class="lead">My interests extend beyond the classroom into scientific research, leadership, entrepreneurship, and public engagement.</p><div class="grid jgg">${jcard4()}</div></div></section>
 ${gsec("exp","Experience","Roles across research communities, student organizations and professional platforms.",1,"zoom","exg",EXP,expItem,"See more experience")}
@@ -458,7 +505,7 @@ ${gsec("aw","Awards","Recognition from competitions, conferences and the organiz
 
 <section data-fx="zoom"><div class="wrap"><h2>Find Me Across Platforms</h2><div style="margin-top:28px">${soc()}</div></div></section>
 <section class="final"><div class="wrap"><h2>Good ideas grow through collaboration.</h2><p>I'm always interested in connecting with researchers, student leaders, organizations, entrepreneurs, and professionals who value curiosity, learning, and meaningful impact.</p><div class="cta"><a class="btn" href="#/contact">Get in Touch</a><a class="btn ghost" href="${LI}" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a></div></div></section>
-<section class="alt" data-fx="up"><div class="wrap"><h2>Organizations That Shaped My Journey</h2><p class="lead">From scientific communities to entrepreneurship initiatives and professional development platforms, each experience has helped me learn, collaborate, and contribute.</p><div class="orgs">${CONFIG.orgs.map(o=>`<button class="org" aria-label="${o.n}: ${o.roles[0][0]}">${LG[o.k]?`<img src="${LG[o.k]}" alt="" loading="lazy">`:o.s}<small>${o.roles[0][0]}</small></button>`).join("")}</div></div></section>`;
+<section class="alt o2" id="orgs" data-fx="up"><div class="wrap"><div class="o2h"><h2>Organizations That Shaped My Journey</h2><p class="lead">From scientific communities to entrepreneurship initiatives and professional development platforms, each experience has helped me learn, collaborate, and contribute.</p></div></div><div class="o2f"><div class="o2fi">${orgCloud()}</div></div><div class="wrap o2c"><p>Hover or tap a logo to see my role.</p><a class="btn ghost" href="#/clubs">Explore my club activities</a></div></section>`;
 $("#cvbtn").onclick=openCV;document.querySelectorAll(".org").forEach(b=>b.onclick=()=>b.classList.toggle("on"));document.querySelectorAll("[data-s]").forEach(a=>a.onclick=e=>{e.preventDefault();$("#journey").scrollIntoView()})},
 "/achievements":()=>{app.innerHTML=head("Recognition, Research & Milestones","Every achievement represents a step in a longer journey of learning, experimentation, collaboration, and growth.")+`<section><div class="wrap">${chips(["Research","Awards","Leadership","Competitions","Conferences","Certifications"])}<div class="grid" id="ag"></div></div></section>`;bind(CONFIG.ach,(a,f)=>a.c.includes(f),"ag",ach)},
 "/clubs":()=>{app.innerHTML=head("Communities That Shaped Me","Student organizations, ambassador roles and professional experiences that shaped how I learn, lead and communicate.")+gsec("gal","Gallery","Role announcements and recognitions from the organizations I have worked with.",0,"zoom","gl2",GAL,gi,"See more photos",8)+`<section class="alt" data-fx="up"><div class="wrap"><h2>Organizations & Roles</h2>${chips(cats)}<div class="grid clg" id="cg"></div></div></section>`;bind(CONFIG.orgs,(o,f)=>o.cat==f,"cg",o=>`<article class="card it clb">${LG[o.k]?`<img class="xl" src="${LG[o.k]}" alt="" loading="lazy">`:""}<div class="meta">${o.cat}</div><h3>${o.n}</h3>${roleList(o)}${o.p.length?`<details><summary>Contributions &amp; outcomes</summary><ul>${o.p.map(x=>`<li>${x}</li>`).join("")}</ul></details>`:""}</article>`)},
@@ -604,6 +651,17 @@ function statTiles(){const G=[["#8B5CF6","#C084FC"],["#38BDF8","#6366F1"],["#EC4
 return [["35+","Certificates"],["15","Events organized"],["22","Competitions participated"],["50+","Sessions attended"]].map((x,i)=>`<div class="card st lgs" style="--g1:${G[i][0]};--g2:${G[i][1]}"><b>${x[0]}</b><span>${x[1]}</span></div>`).join("")}
 function jcard4(){const G=[["#6366F1","#38BDF8"],["#8B5CF6","#C084FC"],["#A855F7","#EC4899"],["#3B82F6","#8B5CF6"]];
 return [0,1,3,4].map((ix,n)=>{const c=JC[ix];return `<article class="card jg" style="--g1:${G[n][0]};--g2:${G[n][1]}"><span class="jgn">0${n+1}</span><div class="jgi"><svg viewBox="0 0 24 24" aria-hidden="true">${IC6[ix]}</svg></div><h3>${c.t}</h3><p>${c.d}</p><div class="jgt">${c.k.map(k=>`<i>${k}</i>`).join("")}</div><div class="jgf"><div class="lg">${c.l.map(k=>`<img src="${LG[k]}" alt="" title="${k}" loading="lazy">`).join("")}</div><a class="btn ghost jgb" href="${c.h}">Explore</a></div></article>`}).join("")}
+/* ===== Floating logo bubbles ===== */
+const OCL={"d": [[72.31, 84.81, 137], [39.33, 55.28, 127], [11.34, 14.72, 127], [10.12, 56.85, 122], [90.44, 21.41, 120], [53.36, 51.26, 117], [23.99, 25.03, 112], [88.08, 73.48, 110], [61.72, 21.25, 107], [61.29, 79.61, 105], [24.41, 76.64, 102], [42.34, 80.15, 100], [73.21, 46.96, 98], [71.2, 17.98, 95], [41.15, 12.14, 93]], "m": [[49.15, 13.68, 90], [84.93, 10.7, 83], [20.07, 53.07, 83], [12.41, 72.86, 80], [88.97, 32.02, 78], [10.9, 9.03, 77], [83.63, 88.75, 74], [11.06, 25.24, 72], [83.19, 66.31, 70], [55.5, 70.03, 69], [10.19, 94.42, 67], [80.1, 49.33, 66], [43.4, 32.59, 64], [54.53, 52.02, 62], [42.67, 87.65, 61]]};
+function heroBubbles(){
+const L=[["acs","ACSCU"],["hult","Hult Prize CU"],["tedx","TEDxCU"],["pp","Presentation PRO"],["jj","Job Jatraa"],["renata","Renata PLC"]],D=40;
+return `<div class="hb"><i class="orb-r back"></i><i class="orb-r front"></i>${L.map((l,i)=>`<span class="el" style="--a0:${i*60}deg;--dl:${(-D*i/6).toFixed(2)}s" title="${l[1]}"><span class="el-i"><img src="${LG[l[0]]}" alt="${l[1]} logo"></span></span>`).join("")}</div>`}
+function orgCloud(){
+const pri=["acs","hult","tedx","pp","jj","renata"];
+const list=[...CONFIG.orgs].sort((a,b)=>{const x=pri.indexOf(a.k),y=pri.indexOf(b.k);return (x<0?99:x)-(y<0?99:y)});
+return list.map((o,i)=>{const d=OCL.d[i],m=OCL.m[i];const side=d[0]>72?" r":d[0]<28?" l":"";
+return `<button type="button" class="o2b it${side}" style="--x:${d[0]}%;--y:${d[1]}%;--sw:${(d[2]/1200*100).toFixed(2)}%;--mx:${m[0]}%;--my:${m[1]}%;--msw:${(m[2]/390*100).toFixed(2)}%;--dl:${((i*.41)%3).toFixed(2)}s;--du:${(5+((i*7)%5)*.6).toFixed(1)}s" aria-label="${o.n}: ${o.roles[0][0]}"><span class="o2i">${LG[o.k]?`<img src="${LG[o.k]}" alt="" loading="lazy">`:`<b>${o.s}</b>`}</span><span class="o2t"><b>${o.s}</b><small>${o.roles[0][0]}</small></span></button>`}).join("")}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest(".o2b");if(!b)return;const on=b.classList.contains("on");document.querySelectorAll(".o2b.on").forEach(x=>x.classList.remove("on"));if(!on)b.classList.add("on")});
 /* ===== Business case competitions showcase ===== */
 function bizShow(){
 const L=SEC.biz;
